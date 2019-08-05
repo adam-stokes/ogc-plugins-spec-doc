@@ -10,7 +10,8 @@ In a ogc spec, place the following:
 
 ```toml
 [SpecDoc]
-spec_file_naming = "^(spec\.toml)"
+file_glob = "**/*spec.toml"
+top_level_dir = "."
 ```
 
 In order for documentation to be generated for a spec the following is required:
