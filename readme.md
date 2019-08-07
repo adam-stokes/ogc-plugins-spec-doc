@@ -8,22 +8,23 @@ generate documentation from spec files
 
 In a ogc spec, place the following:
 
-```toml
-[SpecDoc]
-file_glob = "**/*spec.toml"
-top_level_dir = "."
+```yaml
+plan:
+  - specdoc:
+    file-glob: **/*spec.yml
+    top-level-dir: specs
 ```
 
 In order for documentation to be generated for a spec the following is required:
 
-```toml
-[Info]
-name = "Name of spec"
-description = "Description of spec"
-long_description = """
-# Longer markdown supported text
-"""
+```yaml
+meta:
+  name: Name of spec
+  description: Description of spec
+  long-description: |
+    # Longer markdown supported text
+```
 
 These are the minimum requirements for the spec to be processed into documentation.
 
-### see `ogc spec-doc SpecDoc` for more information.
+### see `ogc spec-doc specdoc` for more information.

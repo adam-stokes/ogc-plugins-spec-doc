@@ -6,7 +6,7 @@ README = Path(__file__).parent.absolute() / "readme.md"
 README = README.read_text(encoding="utf8")
 
 setuptools.setup(
-    name="ogc-plugins-spec-doc",
+    name=package.__plugin_name__,
     version=package.__version__,
     author=package.__author__,
     author_email=package.__author_email__,
@@ -16,5 +16,11 @@ setuptools.setup(
     url=package.__git_repo__,
     py_modules=[package.__name__],
     entry_points={"ogc.plugins": "SpecDoc = ogc_plugins_spec_doc:SpecDoc"},
-    install_requires=["ogc>=0.3.0,<1.0.0", "click>=7.0.0,<8.0.0", "sh>=1.12,<2.0", "mkdocs>=1.0.4,<2.0.0", "mkdocs-material>=4.4.0,<5.0.0"],
+    install_requires=[
+        "ogc>=0.3.0,<1.0.0",
+        "click>=7.0.0,<8.0.0",
+        "sh>=1.12,<2.0",
+        "mkdocs>=1.0.4,<2.0.0",
+        "mkdocs-material>=4.4.0,<5.0.0",
+    ],
 )

@@ -1,0 +1,29 @@
+meta:
+  name: build spec
+  description: tasks for spec-doc plugin
+
+plan:
+  - runner:
+      description: prettyify
+      cmd: black .
+      tags: [dist, bdist]
+  - runner:
+      description: Test
+      cmd: pytest
+      tags: [dist, bdist]
+  - runner:
+      description: Bump revision
+      cmd: punch --part patch
+      tags: [bdist]
+  - runner:
+      description: Build dist
+      cmd: python3 setup.py bdist_wheel
+      tags: [bdist]
+  - runner:
+      description: Upload dist
+      cmd: twine upload dist/*
+      tags: [bdist]
+  - runner:
+      description: cleanup artifacts
+      cmd: rm -rf build dist ogc_plugins_spec_doc.egg-info __pycache__
+      tags: [dist, clean, bdist]
