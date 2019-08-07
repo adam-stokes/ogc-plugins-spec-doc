@@ -10,7 +10,7 @@ from ogc.spec import SpecPlugin, SpecConfigException, SpecProcessException
 from ogc.enums import SPEC_PHASES
 from ogc.state import app
 
-__version__ = "0.0.3"
+__version__ = "0.0.4"
 __author__ = "Adam Stokes"
 __author_email__ = "adam.stokes@gmail.com"
 __maintainer__ = "Adam Stokes"
@@ -99,7 +99,8 @@ class SpecDoc(SpecPlugin):
                 page_obj.append(f"## {phase.capitalize()} Phase\n")
 
                 plugins = spec_yml[phase]
-                for key, val in plugins.items():
+                for plug in plugins:
+                    key, val = next(iter(plug.items()))
                     page_obj.append(f"### Plugin: {key}\n")
                     page_obj.append(f"{val['description']}\n")
                     if "long-description" in val:
