@@ -10,7 +10,7 @@ from ogc.spec import SpecPlugin, SpecConfigException, SpecProcessException
 from ogc.enums import SPEC_PHASES
 from ogc.state import app
 
-__version__ = "0.0.2"
+__version__ = "0.0.3"
 __author__ = "Adam Stokes"
 __author_email__ = "adam.stokes@gmail.com"
 __maintainer__ = "Adam Stokes"
@@ -29,7 +29,7 @@ __example__ = """
 
 ```yaml
 plan:
-  - specdoc:
+  - spec-doc:
     file-glob: **/*spec.yml
     top-level-dir: specs
 """
@@ -110,6 +110,7 @@ class SpecDoc(SpecPlugin):
 
             for dst in doc["mkdocs"]["destination"]:
                 dst = Path(dst)
+                app.log.debug(f" -- Writing to {str(dst)}")
                 out_path_dir = docs_dir / dst.parent
                 out_path_file = out_path_dir / dst.parts[-1]
                 os.makedirs(str(out_path_dir), exist_ok=True)
