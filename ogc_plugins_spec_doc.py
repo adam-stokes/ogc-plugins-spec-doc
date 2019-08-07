@@ -10,7 +10,7 @@ from ogc.spec import SpecPlugin, SpecConfigException, SpecProcessException
 from ogc.enums import SPEC_PHASES
 from ogc.state import app
 
-__version__ = "0.0.1"
+__version__ = "0.0.2"
 __author__ = "Adam Stokes"
 __author_email__ = "adam.stokes@gmail.com"
 __maintainer__ = "Adam Stokes"
