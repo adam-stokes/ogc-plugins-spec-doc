@@ -88,7 +88,7 @@ class SpecDoc(SpecPlugin):
             page_obj.append(f"# {doc['name']}\n")
             if "description" in doc:
                 page_obj.append(f"{doc['description']}\n")
-            if "long_description" in doc:
+            if "long-description" in doc:
                 page_obj.append(f"{doc['long-description']}\n")
 
             # Process any phases
@@ -101,7 +101,7 @@ class SpecDoc(SpecPlugin):
                 plugins = spec_yml[phase]
                 for plug in plugins:
                     key, val = next(iter(plug.items()))
-                    page_obj.append(f"### Plugin: {key}\n")
+                    page_obj.append(f"### Plugin: **{key}**\n")
                     page_obj.append(f"{val['description']}\n")
                     if "long-description" in val:
                         page_obj.append(f"{val['long-description']}\n")
@@ -111,7 +111,7 @@ class SpecDoc(SpecPlugin):
 
             for dst in doc["mkdocs"]["destination"]:
                 dst = Path(dst)
-                app.log.debug(f" -- Writing to {str(dst)}")
+                app.log.info(f" -- Writing to {str(dst)}")
                 out_path_dir = docs_dir / dst.parent
                 out_path_file = out_path_dir / dst.parts[-1]
                 os.makedirs(str(out_path_dir), exist_ok=True)
