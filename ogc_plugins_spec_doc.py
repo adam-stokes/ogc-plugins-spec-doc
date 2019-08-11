@@ -10,7 +10,7 @@ from ogc.spec import SpecPlugin, SpecConfigException, SpecProcessException
 from ogc.enums import SPEC_PHASES
 from ogc.state import app
 
-__version__ = "0.0.5"
+__version__ = "0.0.7"
 __author__ = "Adam Stokes"
 __author_email__ = "adam.stokes@gmail.com"
 __maintainer__ = "Adam Stokes"
@@ -85,7 +85,7 @@ class SpecDoc(SpecPlugin):
                     f"Can not generate doc without a `destination` in {spec}"
                 )
 
-            page_obj.append(f"# {doc['name']}")
+            page_obj.append(f"# {doc['name']}\n")
             if "description" in doc:
                 page_obj.append(f"{doc['description']}\n")
             if "long-description" in doc:
@@ -101,8 +101,7 @@ class SpecDoc(SpecPlugin):
                 plugins = spec_yml[phase]
                 for plug in plugins:
                     key, val = next(iter(plug.items()))
-                    page_obj.append(f"### Plugin: **{key}**\n")
-                    page_obj.append(f"{val['description']}\n")
+                    page_obj.append(f"### Plugin: **{key}** - {val['description']}\n")
                     if "long-description" in val:
                         page_obj.append(f"{val['long-description']}\n")
 
