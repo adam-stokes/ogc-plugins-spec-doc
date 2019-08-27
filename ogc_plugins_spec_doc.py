@@ -1,13 +1,8 @@
-import tempfile
-import sh
 import os
-import datetime
-import textwrap
-import re
-import yaml
 from pathlib import Path
-from ogc.spec import SpecPlugin, SpecConfigException, SpecProcessException
-from ogc.enums import SPEC_PHASES
+
+import yaml
+from ogc.spec import SpecPlugin, SpecProcessException
 from ogc.state import app
 
 __version__ = "0.0.7"
@@ -92,18 +87,18 @@ class SpecDoc(SpecPlugin):
                 page_obj.append(f"{doc['long-description']}\n")
 
             # Process any phases
-            for phase in spec_yml.keys():
-                if phase not in SPEC_PHASES:
-                    continue
+            # for phase in spec_yml.keys():
+            #     if phase not in SPEC_PHASES:
+            #         continue
 
-                page_obj.append(f"## {phase.capitalize()} Phase\n")
+            #     page_obj.append(f"## {phase.capitalize()} Phase\n")
 
-                plugins = spec_yml[phase]
-                for plug in plugins:
-                    key, val = next(iter(plug.items()))
-                    page_obj.append(f"### Plugin: **{key}** - {val['description']}\n")
-                    if "long-description" in val:
-                        page_obj.append(f"{val['long-description']}\n")
+            #     plugins = spec_yml[phase]
+            #     for plug in plugins:
+            #         key, val = next(iter(plug.items()))
+            #         page_obj.append(f"### Plugin: **{key}** - {val['description']}\n")
+            #         if "long-description" in val:
+            #             page_obj.append(f"{val['long-description']}\n")
 
             if not isinstance(doc["mkdocs"]["destination"], list):
                 doc["mkdocs"]["destination"] = [doc["mkdocs"]["destination"]]
