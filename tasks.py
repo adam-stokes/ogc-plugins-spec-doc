@@ -28,7 +28,7 @@ def dist(c):
     c.run("python3 setup.py bdist_wheel")
 
 
-@task
+@task(pre=[clean, dist])
 def install(c):
     c.run("pip install --upgrade dist/*whl --force")
 

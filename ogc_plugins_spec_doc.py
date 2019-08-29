@@ -32,7 +32,6 @@ plan:
 
 class SpecDoc(SpecPlugin):
     friendly_name = "OGC Spec Doc Plugin"
-    description = __description__
 
     options = [
         {
@@ -48,20 +47,20 @@ class SpecDoc(SpecPlugin):
     ]
 
     def _get_specs(self):
-        glob_pat = self.get_plugin_option("file-glob")
-        top_level_dir = self.get_plugin_option("top-level-dir")
+        glob_pat = self.opt("file-glob")
+        top_level_dir = self.opt("top-level-dir")
         for p in Path(top_level_dir).glob(glob_pat):
             yield p
 
     def conflicts(self):
-        top_level_dir = self.get_plugin_option("top-level-dir")
+        top_level_dir = self.opt("top-level-dir")
         if not (Path(top_level_dir) / "mkdocs.yml").exists():
             raise SpecProcessException(
                 f"Must have a `mkdocs.yml` file created in {top_level_dir} in order for OGC to generate mkdoc config and pages."
             )
 
     def process(self):
-        top_level_dir = self.get_plugin_option("top-level-dir")
+        top_level_dir = self.opt("top-level-dir")
         docs_dir = Path(top_level_dir) / "docs"
 
         for spec in self._get_specs():
