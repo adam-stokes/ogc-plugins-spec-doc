@@ -6,7 +6,7 @@ from ogc.exceptions import SpecProcessException
 from ogc.spec import SpecPlugin
 from ogc.state import app
 
-__version__ = "1.0.5"
+__version__ = "1.0.6"
 __author__ = "Adam Stokes"
 __author_email__ = "adam.stokes@gmail.com"
 __maintainer__ = "Adam Stokes"
