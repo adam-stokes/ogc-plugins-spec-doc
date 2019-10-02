@@ -1,6 +1,0 @@
-punch.py
-black
-pylint
-flake8
-isort
-invoke

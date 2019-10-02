@@ -28,11 +28,16 @@ def dist(c):
     c.run("python3 setup.py bdist_wheel")
 
 
-@task(pre=[clean, dist])
+@task
 def install(c):
     c.run("pip install --upgrade dist/*whl --force")
 
 
-@task
+@task(pre=[clean, fix, test, bump_rev, dist])
 def upload(c):
     c.run("twine upload dist/*")
+
+
+@task
+def docs(c):
+    c.run("python3 tools/docgen")
