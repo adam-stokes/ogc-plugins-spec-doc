@@ -5,10 +5,9 @@ import yaml
 from ogc.exceptions import SpecProcessException
 from ogc.spec import SpecPlugin
 from ogc.state import app
-
 from yamlinclude import YamlIncludeConstructor
 
-__version__ = "1.0.6"
+__version__ = "1.0.7"
 __author__ = "Adam Stokes"
 __author_email__ = "adam.stokes@gmail.com"
 __maintainer__ = "Adam Stokes"
