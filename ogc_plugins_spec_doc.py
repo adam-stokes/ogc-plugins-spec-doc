@@ -6,6 +6,8 @@ from ogc.exceptions import SpecProcessException
 from ogc.spec import SpecPlugin
 from ogc.state import app
 
+from yamlinclude import YamlIncludeConstructor
+
 __version__ = "1.0.6"
 __author__ = "Adam Stokes"
 __author_email__ = "adam.stokes@gmail.com"
@@ -29,6 +31,10 @@ plan:
     file-glob: **/*spec.yml
     top-level-dir: specs
 """
+
+YamlIncludeConstructor.add_to_loader_class(
+    loader_class=yaml.FullLoader, base_dir=str(Path.cwd())
+)
 
 
 class SpecDoc(SpecPlugin):
@@ -67,7 +73,9 @@ class SpecDoc(SpecPlugin):
         for spec in self._get_specs():
             app.log.info(f" -- Reading {spec}")
             page_obj = []
-            spec_yml = yaml.safe_load(spec.read_text(encoding="utf8"))
+            spec_yml = yaml.load(
+                spec.read_text(encoding="utf8"), Loader=yaml.FullLoader
+            )
             if "meta" not in spec_yml:
                 app.log.debug(f"No `Info` metadata found in {spec}")
                 continue

@@ -9,3 +9,5 @@ pytest-mock
 pytest-sugar
 ogc>=0.3.48
 twine
+pyyaml>=4.0,<6.0
+pyyaml-include

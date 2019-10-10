@@ -21,6 +21,8 @@ setuptools.setup(
     install_requires=[
         "ogc>=0.3.0,<1.0.0",
         "click>=7.0.0,<8.0.0",
+        "pyyaml>=3.0,<6.0",
+        "pyyaml-include>=1.1.1.1",
         "sh>=1.12,<2.0",
         "mkdocs>=1.0.4,<2.0.0",
         "mkdocs-material>=4.4.0,<5.0.0",
