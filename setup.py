@@ -19,7 +19,7 @@ setuptools.setup(
     py_modules=[package.__name__],
     entry_points={"ogc.plugins": "SpecDoc = ogc_plugins_spec_doc:SpecDoc"},
     install_requires=[
-        "ogc>=0.3.0,<1.0.0",
+        "ogc>=1.0.0,<2.0.0",
         "click>=7.0.0,<8.0.0",
         "pyyaml>=3.0,<6.0",
         "pyyaml-include>=1.1.1.1",
